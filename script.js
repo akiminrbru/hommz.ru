@@ -1,13 +1,68 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Маска для телефона
+    
+    [].forEach.call( document.querySelectorAll('.tel'), function(input) {
+        var keyCode;
+        function mask(event) {
+          event.keyCode && (keyCode = event.keyCode);
+          var pos = this.selectionStart;
+          if (pos < 3) event.preventDefault();
+          var matrix = "+7 (___) ___ ____",
+              i = 0,
+              def = matrix.replace(/\D/g, ""),
+              val = this.value.replace(/\D/g, ""),
+              new_value = matrix.replace(/[_\d]/g, function(a) {
+                  return i < val.length ? val.charAt(i++) : a
+              });
+          i = new_value.indexOf("_");
+          if (i != -1) {
+              i < 5 && (i = 3);
+              new_value = new_value.slice(0, i)
+          }
+          var reg = matrix.substr(0, this.value.length).replace(/_+/g,
+              function(a) {
+                  return "\\d{1," + a.length + "}"
+              }).replace(/[+()]/g, "\\$&");
+          reg = new RegExp("^" + reg + "$");
+          if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) {
+            this.value = new_value;
+          }
+          if (event.type == "blur" && this.value.length < 5) {
+            this.value = "";
+          }
+        }
+    
+        input.addEventListener("input", mask, false);
+        input.addEventListener("focus", mask, false);
+        input.addEventListener("blur", mask, false);
+        input.addEventListener("keydown", mask, false);
+    
+    });
+    
+
     // Меню
     const menuBtn = document.querySelector('.header__menuBtn');
     const mobileNav = document.querySelector('.header__nav');
-
+    const menu_body = document.querySelector('body');;
 
     if (menuBtn) {
         menuBtn.addEventListener('click', () => {
             mobileNav.classList.toggle('active');
             menuBtn.classList.toggle('active');
+            menu_body.classList.toggle('active');
+        });
+    }
+
+    // Меню мобильное 
+
+    const arrowsBot = document.querySelectorAll(".header__nav-arrow");
+
+    if (arrowsBot !== 0) {
+        arrowsBot.forEach(arr =>{
+            arr.addEventListener('click', (e) => {
+                let submenu = e.target.parentNode.parentNode.lastElementChild;
+                submenu.classList.toggle('active');
+            });
         });
     }
 
@@ -31,10 +86,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Табы на главной проекты
 
     let tabs = document.querySelectorAll('.mainProjects__tablinks');
+    let contents = document.querySelectorAll('.mainProjects__tabcontent');
     
     if (tabs.length !== 0) {
         document.getElementById("tab1")?.classList.add('active');
         document.querySelector('[data-tab=tab1]')?.classList.add("active");
+    
+        contents.forEach(el => {
+            el.classList.add('active')
+        });
+
 
         tabs.forEach(function (tab) {
             tab.addEventListener('click', function () {
@@ -63,6 +124,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Слайдер наши проекты
+
+    const swiperProject = new Swiper('.swiperProject', {
+            direction: 'horizontal',
+            spaceBetween: 20,
+            loop: true,
+            
+            pagination: {
+            el: '.swiper-pagination-project',
+            clickable: true,
+            },
+    });
+    
+    const bulletsFunc = () => {
+            const bullets = document.querySelectorAll('.swiper-pagination-bullet');
+            if (bullets.length !== 0) {
+                bullets.forEach(el => {
+                    el.addEventListener('mouseenter', (e) => {
+                        e.target.click();
+                    });
+                })
+            }
+    }
+    bulletsFunc();
+
+    for (let index = 1; index < contents.length; index++) {
+        const element = contents[index];
+        element.classList.remove('active');
+    }
+
     // Табы на главной реализованные проекты
 
     let rtabs = document.querySelectorAll('.mainRealised__tablinks');
@@ -84,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Скрываем все содержимое вкладок
             tabcontent = document.getElementsByClassName("mainRealised__tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].classList.remove('active')
+                tabcontent[i].classList.remove('active');
             }
         
             // Деактивируем все кнопки вкладок
@@ -98,42 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Слайдер наши проекты
-
-    const swiperProject = new Swiper('.swiperProject', {
-        direction: 'horizontal',
-        spaceBetween: 20,
-        loop: true,
-        
-        pagination: {
-          el: '.swiper-pagination-project',
-          clickable: true,
-        },
-    });
-    
-    const bullets = document.querySelectorAll('.swiper-pagination-bullet');
-    if (bullets.length !== 0) {
-        bullets.forEach(el => {
-            el.addEventListener('mouseenter', (e) => {
-                e.target.click();
-            });
-        })
-    }
 
     // Слайдер реализованные проекты
-
-
-    // const swiperRealised = new Swiper('.swiperRealised', {
-    //     direction: 'horizontal',
-    //     slidesPerView: 3,
-    //     spaceBetween: 36,
-    //     loop: true,
-            
-    //     navigation: {
-    //         nextEl: '.swiper-realised-next',
-    //         prevEl: '.swiper-realised-prev',
-    //     },
-    //  });
 
     const arrow_next = document.querySelectorAll('.mainRealised__next');
     const arrow_prev = document.querySelectorAll('.mainRealised__prev');

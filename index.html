@@ -15,8 +15,8 @@
 			<div class="container">
 				<div class="header__inner">
 					<div class="header__top">
-						<a class="header__download" href="#"> <img src="assets/icons/download.svg" alt="Скачать каталог" /> <span>Скачать каталог</span></a>
-						<img class="header__logo" src="assets/img/logo.png" alt="Логотип" />
+						<a class="header__download" download href="#"> <img src="assets/icons/download.svg" alt="Скачать каталог" /> <span>Скачать каталог</span></a>
+						<a class="header__logo-wrap" href="#"><img class="header__logo" src="assets/img/logo.png" alt="Логотип" /></a>
 						<div class="header__right">
 							<div class="header__links">
 								<a class="header__links-whatsapp" href="#"><img src="assets/icons/whatsapp.svg" alt="whatsapp" /></a>
@@ -27,12 +27,24 @@
 					</div>
 					<nav class="header__nav">
 						<ul class="header__nav-links">
-							<li class="header__nav-link"><a href="#">Услуги</a></li>
-							<li class="header__nav-link"><a href="#">Проекты</a></li>
-							<li class="header__nav-link"><a href="#">Мебель</a></li>
-							<li class="header__nav-link"><a href="#">О нас</a></li>
-							<li class="header__nav-link"><a href="#">Новости</a></li>
-							<li class="header__nav-link"><a href="#">Контакты</a></li>
+							<li class="header__nav-link">
+								<div class="header__nav-under">
+									<a class="header__nav-a" href="#">Услуги </a>
+									<div class="header__nav-arrow"><img src="assets/icons/arrow-top.svg" alt="arrow-top" /></div>
+								</div>
+								<ul class="header__nav-sublinks">
+									<li class="header__nav-sublink"><a href="#">Интерьерный дизайн</a></li>
+									<li class="header__nav-sublink"><a href="#">Архитектура</a></li>
+									<li class="header__nav-sublink"><a href="#">Ландшафтный дизайн</a></li>
+									<li class="header__nav-sublink"><a href="#">Авторский надзор</a></li>
+									<li class="header__nav-sublink"><a href="#">Консультация по выбору квартиры или дома</a></li>
+								</ul>
+							</li>
+							<li class="header__nav-link"><a class="header__nav-a" href="#">Проекты</a></li>
+							<li class="header__nav-link"><a class="header__nav-a" href="#">Мебель</a></li>
+							<li class="header__nav-link"><a class="header__nav-a" href="#">О нас</a></li>
+							<li class="header__nav-link"><a class="header__nav-a" href="#">Новости</a></li>
+							<li class="header__nav-link"><a class="header__nav-a" href="#">Контакты</a></li>
 						</ul>
 						<div class="header__nav_bot">
 							<a href="#"><img src="assets/icons/whatsapp.svg" alt="" /> <span>Написать в whatsapp </span></a>
@@ -715,7 +727,7 @@
 							<div class="mainForm__inputs">
 								<input type="text" placeholder="Имя" />
 								<input type="text" placeholder="E-mail" />
-								<input type="text" placeholder="Телефон *" />
+								<input type="text" placeholder="Телефон *" class="tel" />
 								<textarea type="text" placeholder="Комментарий"></textarea>
 							</div>
 							<div class="mainForm__bot">
@@ -790,10 +802,12 @@
 			<div class="footer__bot">
 				<div class="container">
 					<div class="footer__bot-inner">
-						<img class="footer__bot-logo" src="assets/img/logo.png" alt="Лого футер" />
+						<a class="footer__bot-logoLink" href="/"><img class="footer__bot-logo" src="assets/img/logo.png" alt="Лого футер" /></a>
 						<nav>
 							<ul class="footer__bot-links">
-								<li class="footer__bot-link"><a href="#">Услуги</a></li>
+								<li class="footer__bot-link">
+									<a href="#">Услуги</a>
+								</li>
 								<li class="footer__bot-link"><a href="#">Проекты</a></li>
 								<li class="footer__bot-link"><a href="#">Мебель</a></li>
 								<li class="footer__bot-link"><a href="#">О нас</a></li>
