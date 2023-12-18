@@ -334,6 +334,14 @@ img {
         flex-grow: 1;
         display: flex;
         justify-content: end;
+        align-items: center;
+        height: 30px;
+    }
+
+    .header__nav-arrow img {
+        pointer-events: none;
+        width: 16px;
+        height: 16px;
     }
 
     .header__nav-links .header__nav-sublinks.active {
