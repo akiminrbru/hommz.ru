@@ -669,7 +669,16 @@ img {
     }
 
     .footer__left-links {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer__left-link:nth-child(3) {
+        order: 4;
+    }
+
+    .footer__left-link:nth-child(4) {
+        order: 3;
     }
 
     .footer__card {
@@ -822,7 +831,7 @@ img {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    padding: 72px 94px 0 108px;
+    padding: 72px 94px 72px 108px;
     display: flex;
     gap: 30px;
     margin-bottom: 163px;
@@ -848,7 +857,6 @@ img {
     position: relative;
     max-width: 540px;
     background-color: #FFF;
-    margin-bottom: -53px;
 }
 
 .mainForm__title {
@@ -991,7 +999,7 @@ img {
     }
 
     .mainForm__inner {
-        padding: 50px 70px 0 70px;
+        padding: 50px 70px 50px 70px;
     }
 }
 
@@ -1002,7 +1010,6 @@ img {
 
     .mainForm__inner {
         padding: 50px;
-        padding-bottom: 0;
     }
 
     .mainForm__left h2 {
@@ -1018,11 +1025,11 @@ img {
 
 @media screen and (max-width: 576px) {
     .mainForm__inner {
-        padding: 31px 25px 0 25px;
+        padding: 31px 25px 31px 25px;
         gap: 20px;
         margin-left: -25px;
         margin-right: -25px;
-        margin-bottom: 238px;
+        margin-bottom: 0px;
     }
 
     .mainForm__left h2 {
@@ -1047,10 +1054,6 @@ img {
     .mainForm__from {
         padding: 20px;
         padding-bottom: 35px;
-    }
-
-    .mainForm__right {
-        margin-bottom: -198px;
     }
 }
 
